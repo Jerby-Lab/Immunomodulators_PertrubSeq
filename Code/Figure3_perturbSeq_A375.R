@@ -4,7 +4,7 @@
 #************** Figure 3: Perturb-seq applied to A375 cells in monoculture and coculture with T cells **************#
 
 Fig3_PerturbSeq<-function(){
-  r<-readRDS(get.file("PerturbA375_processed_wSeurat.rds"))
+  r<-readRDS(get.file("PerturbA375_processed.rds"))
   rNTC<-readRDS(get.file("PerturbA375_NTCs.rds"))
   r1<-readRDS(get.file("PerturbA375_monoculture.rds"))
   X<-readRDS(get.file("PerturbA375_GAsig_vs_hits.rds"))
