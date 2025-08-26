@@ -1,4 +1,4 @@
-# GitHub Code, Akana, Yoe et al., 2025; Module 1
+# GitHub Code, Akana, Yoe et al., 2025
 # Figure 3 related analyses: Perturb-seq application to A375 melanoma cells in monoculture and coculture with NY-ESO-1 TCR T cells.
 
 #************** Analysis of A375 Perturb-seq data **************#
