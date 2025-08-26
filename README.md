@@ -1,4 +1,4 @@
-This repository was created to regenerate the Figures and reproduce the results from Akana et al., under review.
+This repository was created to regenerate the Figures and reproduce the results from Akana, Yoe et al., under review.
 
 To repeat the analyses and regenerate the figures:
 1. Download the data from the single cell protal
