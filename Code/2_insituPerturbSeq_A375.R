@@ -2,15 +2,25 @@
 # Figure 5 related analyses: In situ Perturb-seq application to A375 xenografts in NSG mice.
 
 insituPerturbSeqA375_main<-function(){
-  files1<-list.files(get.file(""),pattern = "InsituPerturbSeq_A375_",full.names = T)
-  files1<-files1[grepl("_mal",files1)]
-  rA<-lapply(files1, readRDS)
-  names(rA)<-paste0("tumor",1:4)
   overwrite<<-T
+  rA<-insituPerturbSeqA375_getMalData()
   R<-insituPerturbSeqA375_DEGs(rA)
   Rcv<-insituPerturbSeqA375_LOOCV(R$DEGs_perTumor,rA,min.n.genes = 5,q1 = 1000,sig ="BH.sig",pCut = )
   return()
 }
+
+insituPerturbSeqA375_getMalData<-function(){
+  rF1<-readRDS(get.file("InsituPerturbSeq_A375_Slide1.rds"))
+  rF2<-readRDS(get.file("InsituPerturbSeq_A375_Slide2.rds"))
+  d1<-set.list(rF1,rF1$samples=="tumor1"&rF1$cell.types=="Malignant",name = "tumor1")
+  d2<-set.list(rF1,rF1$samples=="tumor2"&rF1$cell.types=="Malignant",name = "tumor2")
+  d3<-set.list(rF2,rF2$samples=="tumor3"&rF2$cell.types=="Malignant",name = "tumor3")
+  d4<-set.list(rF2,rF2$samples=="tumor4"&rF2$cell.types=="Malignant",name = "tumor4")
+  rA<-list(d1,d2,d3,d4)
+  names(rA)<-paste0("tumor",1:4)
+  return(rA)
+}
+
 
 insituPerturbSeqA375_DEGs<-function(rA){
   file0<-get.file("InsituPerturbSeq_A375_DEGs_perTumor.rds")
