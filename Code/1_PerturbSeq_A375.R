@@ -6,8 +6,10 @@
 PerturbA375_main<-function(){
   # Download the Perturb-seq data
   r<-readRDS(get.file("PerturbA375_processed.rds"))
-  r1<-readRDS(get.file("PerturbA375_monoculture_wSeurat.rds"))
-  r2<-readRDS(get.file("PerturbA375_coculture.rds"))
+  r1<-set.list(r,r$labelsF=="Monoculture",name = "PerturbA375_monoculture")
+  r1$seurat<-readRDS(get.file("PerturbA375_monoculture_SeuratObj.rds"))
+  r2<-set.list(r,r$labelsF=="Coculture",name = "PerturbA375_coculture")
+  
   rNTC<-readRDS(get.file("PerturbA375_NTCs.rds"))
   sig<-readRDS(get.file("PerturbA375_GA_sig.rds"))
   overwrite<<-F
@@ -112,7 +114,7 @@ PerturbSeq_DEGs_edgeR<-function(r1,per.target = T,n1 = 10,filter.flag = F){
     name<-paste0(r1$name,"_sgRNA")
   }
   if(filter.flag){name<-paste0(name,"_filter")}else{n1 = 5;print("No filter")}
-  savefile<-get.file(paste0("PerturbA375_DEGs_",name,".rds"))
+  savefile<-get.file(paste0("PerturbA375_DEGs_",gsub("PerturbA375_","",name),".rds"))
   if(!overwrite&file.exists(savefile)){return(readRDS(savefile))}
   
   merged <- SingleCellExperiment(assays = list(counts = r1$cd),mainExpName = "counts")

@@ -6,8 +6,8 @@
 Fig6_insituPerturbSeqB16<-function(){
   r<-readRDS(get.file("InsituPerturbSeq_B16_referenceMap.rds"))
   r1<-readRDS(get.file("InsituPerturbSeq_B16_slide2_FOVs2plot.rds"))
-  rslts1<-readRDS("/Volumes/ljerby/PerturbSeq/Data/insituPerturbSeq/R_data/InSituPSeq_B16_DEGs.rds")
-  rslts2<-readRDS("/Volumes/ljerby/PerturbSeq/Data/insituPerturbSeq/R_data/InSituPSeq_B16_DEG_TMEs.rds")
+  rslts1<-readRDS(get.file("InsituPerturbSeq_B16_DEGs.rds"))
+  rslts2<-readRDS(get.file("InsituPerturbSeq_B16_pMCPs"))
   
   Fig6a_insituPerturbSeqB16_spatialMaps(r1)
   Fig6b_insituPerturbSeqB16_UMAPs(r)

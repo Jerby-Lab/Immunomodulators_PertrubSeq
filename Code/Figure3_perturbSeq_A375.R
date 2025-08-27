@@ -6,7 +6,6 @@
 Fig3_PerturbSeq<-function(){
   r<-readRDS(get.file("PerturbA375_processed.rds"))
   rNTC<-readRDS(get.file("PerturbA375_NTCs.rds"))
-  r1<-readRDS(get.file("PerturbA375_monoculture.rds"))
   X<-readRDS(get.file("PerturbA375_GAsig_vs_hits.rds"))
   sig<-readRDS(get.file("PerturbA375_GA_sig.rds"))
   sigCo<-readRDS(get.file("PerturbA375_covsmono_sig.rds"))

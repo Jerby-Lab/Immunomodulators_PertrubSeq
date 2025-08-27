@@ -5,12 +5,14 @@
 
 insituPSeq_B16_main<-function(){
   overwrite<<-T
+  rF<-readRDS(get.file("InsituPerturbSeq_B16.rds"))
+  r<-set.list(rF,grepl("pool",rF$samples),name = "InsituPSeq_B16_pools_FINAL")
+  
   # Map perturbation impact on the perturbed cancer cells
   r_mal<-readRDS(get.file("InsituPerturbSeq_B16_mal.rds"))
   rslts<-insituPSeq_B16_malignant_DEG(r_mal)
   
   # Map perturbation impact on nearby immune and stromal cells
-  r<-readRDS(get.file("InsituPerturbSeq_B16_pools.rds"))
   rslts<-insituPSeq_B16_pMCPs(r)
 }
 
