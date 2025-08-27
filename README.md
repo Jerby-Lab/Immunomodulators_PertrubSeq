@@ -6,4 +6,4 @@ To repeat the analyses and regenerate the figures:
 3. Source setup.R with the required R pacakges
 4. Run main.R
 
-The "Figures" folder provided here includes the figures that this code will regenerate.
+The "Figures" folder that will be provided here will include the figures that this code regenerates.
