@@ -946,6 +946,27 @@ list.2.mat<-function(l){
   return(m)
 }
 
+list.2.ids<-function(ids,l,single.flag = F){
+  if(length(l)==1){
+    m<-ifelse(is.element(ids,l[[1]]),names(l),"")
+    return(m)
+  }
+  B<-t(laply(l,function(x) is.element(ids,x)))
+  colnames(B)<-names(l)
+  m<-get.mat(ids,"Anno")
+  m[]<-"ID"
+  for(i in names(l)){
+    m[B[,i]]<-paste(m[B[,i]],i,sep = "&")
+  }
+  m<-gsub("ID&","",m)
+  m<-gsub("ID","",m)
+  if(single.flag){
+    m<-cbind(m,get.strsplit(m,"&",1))
+    m[m[,1]=="",2]<-""
+  }
+  return(m)
+}
+
 get.mat<-function(m.rows,m.cols,data = NA){
   m<-matrix(data = data, nrow = length(m.rows),ncol = length(m.cols),
             dimnames = list(m.rows,m.cols))
@@ -1967,6 +1988,8 @@ plot.auc<-function(p1,y1,main = "",subplotF = T,precF = F,add = F,col = "black",
   
   return(auc)
 }
+
+
 
 
 

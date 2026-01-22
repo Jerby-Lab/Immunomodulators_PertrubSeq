@@ -1,6 +1,10 @@
-path2code<-XX
-path2input<-YY
-path2output<-ZZ
+path2code<-"/Users/ljerby/Documents/GitHub/Immunomodulators_PertrubSeq/Code/"
+path2input<-"~/Desktop/GitHub/Data/CombinedFlat/"
+path2output<-"~/Desktop/GitHub/"
+
+# path2code<-XX
+# path2input<-YY
+# path2output<-ZZ
 
 library(scater);library(edgeR)
 library(beanplot);library(cowplot)
